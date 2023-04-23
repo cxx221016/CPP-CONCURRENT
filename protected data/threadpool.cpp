@@ -171,7 +171,6 @@ void change(int& a,int& b)
 int main()
 {
     threadpool pool(4);
-    
     std::vector<std::future<int>> res;
     for(int i=0;i<10;i++)
     {
@@ -211,6 +210,14 @@ int main()
 
     printf("%d %d\n",a,b);
     printf("%d\n",res.get());*/
+    /*
+    std::function<int(int,int)> f=[](int a,int b)
+    {
+        return a+b;
+    };
+    auto res=pool.submit(f,1,2);
+    printf("%d\n",res.get());
+    */
     system("pause");
     return 0;
 }
