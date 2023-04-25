@@ -3,7 +3,7 @@
 using namespace std;
 Semaphore s(1);
 int cnt1=0,cnt2=0,cnt3=0;
-Semaphore s1(0),s2(0),s3(0);
+Semaphore s1(1),s2(1),s3(1);
 
 void show1()
 {
@@ -14,7 +14,7 @@ void show1()
         s.wait();
     }
     s1.signal();
-    printf("show1 %d",std::this_thread::get_id());
+    printf("show1 %d\n",std::this_thread::get_id());
     s1.wait();
     cnt1--;
     if(cnt1==0)
@@ -33,7 +33,7 @@ void show2()
         s.wait();
     }
     s2.signal();
-    printf("show2 %d",std::this_thread::get_id());
+    printf("show2 %d\n",std::this_thread::get_id());
     s2.wait();
     cnt2--;
     if(cnt2==0)
@@ -74,7 +74,7 @@ void show##x()\
         s.wait();\
     }\
     s##x.signal();\
-    printf("show%d %d",x,std::this_thread::get_id());\
+    printf("show%d\n",x,std::this_thread::get_id());\
     s##x.wait();\
     cnt##x--;\
     if(cnt##x==0)\
